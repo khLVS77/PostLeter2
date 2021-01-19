@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Поштові відправлення...</title>
+<style>
+	.MyMarginLeft {margin-left: 2em; }
+	.MyMarginRight {margin-right: 2em; }
+	</style>
+
+	</head>
+	<body>
+<nav>
+<a class="MyMarginRight" href="https://www.ukrposhta.ua/ua" title="Офіційний сайт..." target=_blank_>Сайт Укрпошти...</a>
+<a class="MyMarginRight" href="https://index.ukrposhta.ua/find-post-index?_ga=2.96969887.1462037200.1606392149-1586739790.1606392149" target=_blank_>Поштові індекси...</a>
+<a class="MyMarginRight" href="https://calc.ukrposhta.ua/domestic-calculator?_ga=2.137774000.1462037200.1606392149-1586739790.1606392149" target=_blank_>Розрахунок вартості...</a>
+<a class="MyMarginRight" href="https://track.ukrposhta.ua/tracking_UA.html?_ga=2.95387676.1462037200.1606392149-1586739790.1606392149" target=_blank_>Трекінг...</a>
+<input type="button" onclick = "Marks()" value="Номінали марок..." title="Натисніть для розрахунку...">
+<hr>
+</nav>		
+
+<h1>Поштова відправка <span id="current_date_time_block"></span></h1>
+
+	
+		<hr>
+		
+		<form>
+			<fieldset>
+        			<legend>
+					<b>1. Прості листи...</b>
+				</legend>
+				
+				<blockquote style="border-left: 2px dotted red; padding-left: 10px;">	    	
+					<i>Встановіть необхідну кількість <b>простих</b> листів з урахуванням ваги (наприклад, листів до 50 грам - 5 шт,
+ 						від 51 до 250 грамів - 10 шт, вагою більш ніж 250 грам - 0 шт)...</i>
+		 		</blockquote>
+    		
+				<label for="small"> 1) вага до 50 грам включно (9 грн [Марка - V]):</label>
+				<input type="number" min="0" max="100" step="1" id="small" value="0">
+				<label for="small"> шт.;</label>
+				<br>
+
+				<label for="medium"> 2) вага від 51 до 250 грам включно (13,50 грн [Марка - M]): </label>
+				<input type="number" min="0" max="100" step="1" id="medium" value="0">
+				<label for="medium"> шт.;</label>
+				<br>
+	
+				<label for="big"> 3) вага більше 250 грам (27 грн): </label>
+				<input type="number" min="0" max="100" step="1" id="big" value="0">
+				<label for="big"> шт.</label>
+				<br>
+				<hr>
+								
+				
+
+				<span id="Cost"></span>				
+
+			</fieldset>
+			
+		</form>
+
+		<form>
+			<fieldset>
+        			<legend>
+					<b>2. Рекомендовані листи...</b>
+				</legend>
+					
+
+				
+				<blockquote style="border-left: 2px dotted red; padding-left: 10px;">	    	
+					<i>Встановіть необхідну кількість <b>рекомендованих</b> листів з урахуванням ваги (наприклад, листів до 50 грам - 5 шт,
+ 						від 51 до 250 грамів - 10 шт, вагою більш ніж 250 грам - 0 шт) та наявності чи відсутності повідомлення про вручення...</i>
+		 		</blockquote>
+
+				
+					
+					<div style = "width: 50%; float: left;">
+					<form>
+						<fieldset>
+							<legend>
+								<b>2.1. Рекомендовані листи БЕЗ ПОВІДОМЛЕННЯ про вручення...</b>
+							</legend>
+						
+							<label for="small1"> 1) вага до 50 грам включно (17 грн [Марка - F]):</label>
+							<input type="number" min="0" max="100" step="1" id="small1" value="0">
+							<label for="small1"> шт.;</label>
+							<br>
+
+							<label for="medium1"> 2) вага від 51 до 250 грам включно (21,50 грн): </label>
+							<input type="number" min="0" max="100" step="1" id="medium1" value="0">
+							<label for="medium1"> шт.;</label>
+							<br>
+	
+							<label for="big1"> 3) вага більше 250 грам (35 грн): </label>
+							<input type="number" min="0" max="100" step="1" id="big1" value="0">
+							<label for="big1"> шт.</label>
+							<br>
+							<hr>
+											
+							
+							<span id="Cost1"></span>	
+						</fieldset>
+					</form>	
+					</div>
+
+
+					<div style = "width: 50%; float: right;">
+					<form>
+						<fieldset>
+							<legend>
+								<b>2.2. Рекомендовані листи З ПОВІДОМЛЕННЯМ про вручення...</b>
+							</legend>
+						
+							<label for="small2"> 1) вага до 50 грам включно (35 грн):</label>
+							<input type="number" min="0" max="100" step="1" id="small2" value="0">
+							<label for="small2"> шт.;</label>
+							<br>
+
+							<label for="medium2"> 2) вага від 51 до 250 грам включно (39,50 грн): </label>
+							<input type="number" min="0" max="100" step="1" id="medium2" value="0">
+							<label for="medium2"> шт.;</label>
+							<br>
+		
+							<label for="big2"> 3) вага більше 250 грам (53 грн): </label>
+							<input type="number" min="0" max="100" step="1" id="big2" value="0">
+							<label for="big2"> шт.</label>
+							<br>
+							<hr>
+								
+						
+	
+							<span id="Cost2"></span>	
+						</fieldset>
+					</form>				
+					</div>
+				
+					
+
+
+			</fieldset>
+
+			
+		</form>
+
+<hr>
+										
+					<input type="button" onclick = "Cost()" value="Розрахувати..." title="Натисніть для розрахунку...">
+					<span style="color:red;" id="Cost3"></span>
+					
+		<script src = post.js></script>			
+	</body>
+</html>
