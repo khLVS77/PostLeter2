@@ -1,41 +1,28 @@
-// Налаштування вартості листів. Глобальні константи
-
-// -- прості листи --
-let prosti_cost = 
-{
-	small: 9, // до 50 г
-	medium: 13.5, //51-250 г
-	big: 27 //більше 251 г
-};
- 
-//---------------------------------------
-
-// -- рекомендовані листи --
-
-let recomendovani_procti_cost =
-{
-        small: 17, // до 50 г
-	medium: 21.5, //51-250 г
-	big: 35 //більше 251 г
-};
-//----------------------------------------
-
-// -- рекомендовані з повідомленням про вручення
-
-let recomendovani_zpovidomlennyam_cost =
-{
-small: 35, // до 50 г
-	medium: 39.5, //51-250 г
-	big: 53 //більше 251 г
-};
-//----------------------------------------
-
-
 let RezCol=0;
 let RezSum=0;
 
+function Marks()
+{
+const 
+	V = 9,
+	F = 17,
+	M = 13.5,
+	L = 11,
+	D = 8,
+	T = 3,
+	X = 20;
+
+window.alert("Номінали марок:\r\n\r\n".toUpperCase()+
+	"V - "+V+ " грн\r\n"+
+	"F - "+F+ " грн\r\n"+
+	"M - "+M+ " грн\r\n"+
+	"L - "+L+ " грн\r\n"+
+	"D - "+D+ " грн\r\n"+
+	"T - "+T+ " грн\r\n"+
+	"Х - "+X+ " грн" );
+}
+
 //---------------------------------------
-// .... Взято з інтернету ...
   
     /* функция добавления ведущих нулей */
     /* (если число меньше десяти, перед числом добавляем ноль) */
@@ -63,67 +50,65 @@ let RezSum=0;
     } 
 
 //-------------------------------------------
-function Prosti(cost)
+function Prosti()
 {
+ const smallCost = 9, // до 50 г
+	mediumCost = 13.5, //51-250 г
+	bigCost = 27; //більше 251 г
 	
-
- 
-let small = document.getElementById("small").value,
+ let small = document.getElementById("small").value,
 	medium = document.getElementById("medium").value,
 	big = document.getElementById("big").value;
  let Col = Number(small) + Number(medium) + Number(big);
- let Rez = (small * cost.small) + (medium * cost.medium) + (big * cost.big);
+ let Rez = (small * smallCost) + (medium * mediumCost) + (big * bigCost);
 RezCol+=Col;
 RezSum+=Rez;	
 	document.getElementById("Cost").innerHTML="<b> Загальна кількість простих листів: </b>" + Col + "<b>; Загальна вартість простих листів: </b>" + Rez + " <b>грн.</b>";
 
 }
 //--------------------------------
-
-function Recomendovani1(cost)
+function Recomendovani1()
 {
- 
-
+ const smallCost = 17, // до 50 г
+	mediumCost = 21.5, //51-250 г
+	bigCost = 35; //більше 251 г
 	
  let small = document.getElementById("small1").value,
      medium = document.getElementById("medium1").value,
      big = document.getElementById("big1").value;
  let Col = Number(small) + Number(medium) + Number(big);
- let Rez = (small * cost.small) + (medium * cost.medium) + (big * cost.big);
+ let Rez = (small * smallCost) + (medium * mediumCost) + (big * bigCost);
 	RezCol+=Col;
 RezSum+=Rez;
 	document.getElementById("Cost1").innerHTML="<b> Кількість листів: </b>" + Col + "<b>; Вартість листів: </b>" + Rez + " <b>грн.</b>";
 
 }
 //-----------------------------
-
-function Recomendovani2(cost)
+function Recomendovani2()
 {
- 
-//alert(cost.small.);
-//alert(cost.medium);
-//alert(cost.big);
+ const smallCost = 35, // до 50 г
+	mediumCost = 39.5, //51-250 г
+	bigCost = 53; //більше 251 г
 	
  let small = document.getElementById("small2").value,
      medium = document.getElementById("medium2").value,
      big = document.getElementById("big2").value;
  let Col = Number(small) + Number(medium) + Number(big);
-let Rez = (small * cost.small) + (medium * cost.medium) + (big * cost.big);
+ let Rez = (small * smallCost) + (medium * mediumCost) + (big * bigCost);
 	RezCol+=Col;
 RezSum+=Rez;
 	document.getElementById("Cost2").innerHTML="<b> Кількість листів: </b>" + Col + "<b>; Вартість листів: </b>" + Rez + " <b>грн.</b>";
 
 }
 //--------------------------------------------
-
 function Cost()
 {
 	RezCol=0;
 	RezSum=0;
 	
-	Prosti(prosti_cost);
-	Recomendovani1(recomendovani_procti_cost);
-	Recomendovani2(recomendovani_zpovidomlennyam_cost);
+	Prosti();
+	Recomendovani1();
+	Recomendovani2();
 
 document.getElementById("Cost3").innerHTML="<b> Загальна кількість листів: </b>" + RezCol + "<b>; Загальна вартість листів: </b>" + RezSum + " <b>грн.</b>";
 
