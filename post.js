@@ -1,6 +1,93 @@
 let RezCol=0;
 let RezSum=0;
+let Prosti_OK=1;
+let Recomend1_OK=1;
+let Recomend2_OK=1;
 
+function IS_ERROR(num)
+/* Переірка вводу на помилку... */
+{
+	if (isNaN(parseInt(num,10)))
+	{
+		alert("Клькість Не може бути рядком чи пустим полем!!!!!");
+		return "ERROR";		
+	}
+	else if (num < 0)
+		{
+			alert("Клькість Не може бути меньшою за 0 !!!!!");
+ 
+	 		return "ERROR";
+		}
+
+	else if (Number.isInteger(num / 1)) 
+	{
+			alert("Все чудово!!!!");
+			return 'ОК';
+	
+}
+	else
+	{
+		alert("Клькість Не може бути не цілою!!!!!");
+ 
+	 	return "ERROR";
+	}	
+
+}
+//------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------
+function NOT_Negative()
+{
+
+//Перевірка на введення від'ємної кількості листів
+//alert("NOT_Negative()");	
+	let small = document.getElementById("small").value,
+		medium = document.getElementById("medium").value,
+		big = document.getElementById("big").value;
+	let flag = 0;
+
+
+	if (Number(small)< 0 || Number(medium)< 0 || Number(big) < 0)
+	{
+		window.alert("ПОМИЛКА!!!!\r\n Кількіть листів не може бути від'ємною!!!!");
+		flag=1;
+		Prosti_OK=0;
+		document.getElementById("Cost").innerHTML="Кількіть листів не може бути від'ємною!!!!";
+	};
+
+
+	let small1 = document.getElementById("small1").value,
+     		medium1 = document.getElementById("medium1").value,
+     		big1 = document.getElementById("big1").value;
+	
+	if (Number(small1)< 0 || Number(medium1)< 0 || Number(big1) < 0)
+	{
+		if (flag == 0)
+		{
+			window.alert("ПОМИЛКА!!!!\r\n Кількіть листів не може бути від'ємною!!!!");
+			flag=1;
+		};
+
+		Recomend1_OK=0;
+		document.getElementById("Cost1").innerHTML="Кількіть листів не може бути від'ємною!!!!";
+	};
+
+
+	let small2 = document.getElementById("small2").value,
+		medium2 = document.getElementById("medium2").value,
+		big2 = document.getElementById("big2").value;
+	if (Number(small2)< 0 || Number(medium2)< 0 || Number(big2) < 0)
+	{
+		if (flag == 0)
+		{
+			window.alert("ПОМИЛКА!!!!\r\n Кількіть листів не може бути від'ємною!!!!");
+			flag=1;
+		};
+		Recomend2_OK=0;
+		document.getElementById("Cost2").innerHTML="Кількіть листів не може бути від'ємною!!!!";
+	};
+}
+//--------------------------------
 function Marks()
 {
 const 
@@ -59,14 +146,24 @@ function Prosti()
  let small = document.getElementById("small").value,
 	medium = document.getElementById("medium").value,
 	big = document.getElementById("big").value;
+ 
+
+IS_ERROR(small);
+
+
+
  let Col = Number(small) + Number(medium) + Number(big);
  let Rez = (small * smallCost) + (medium * mediumCost) + (big * bigCost);
+
+
+
 RezCol+=Col;
 RezSum+=Rez;	
 	document.getElementById("Cost").innerHTML="<b> Загальна кількість простих листів: </b>" + Col + "<b>; Загальна вартість простих листів: </b>" + Rez + " <b>грн.</b>";
 
 }
-//--------------------------------
+//--------------------------------------
+
 function Recomendovani1()
 {
  const smallCost = 17, // до 50 г
@@ -106,11 +203,37 @@ function Cost()
 	RezCol=0;
 	RezSum=0;
 	
-	Prosti();
-	Recomendovani1();
-	Recomendovani2();
+	Prosti_OK=1;
+	Recomend1_OK=1;
+	Recomend2_OK=1;
 
-document.getElementById("Cost3").innerHTML="<b> Загальна кількість листів: </b>" + RezCol + "<b>; Загальна вартість листів: </b>" + RezSum + " <b>грн.</b>";
+NOT_Negative();
+if (Prosti_OK==1)
+{
+	//alert(Prosti_OK);
+	Prosti();
+};
+
+if (Recomend1_OK==1)
+{
+	Recomendovani1();
+};
+
+if (Recomend2_OK==1)
+{
+	Recomendovani2();
+};	
+
+if (Prosti_OK*Recomend1_OK*Recomend2_OK != 1)
+{
+	document.getElementById("Cost3").innerHTML="УВАГА!!! Під час розрахунку виникла помилка !!!";
+}
+else
+{
+	document.getElementById("Cost3").innerHTML="<b> Загальна кількість листів: </b>" + RezCol + "<b>; Загальна вартість листів: </b>" + RezSum + " <b>грн.</b>";
+};
+
+
 
 /* выводим текущую дату и время на сайт в блок с id "current_date_time_block" */
 document.getElementById('current_date_time_block').innerHTML = date_time();
